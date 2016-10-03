@@ -12,3 +12,28 @@ var twoSum = function(nums, target) {
 
     }
 };
+
+
+#####Two Sum II
+
+var twoSum = function(numbers, target) {
+    returnarr = [];
+    left = 0;
+    right = numbers.length -1;
+    while(left<right){
+        sum = numbers[left]+ numbers[right];
+        if(sum === target){
+            returnarr[0] = left+1;
+            returnarr[1] = right+1;
+            return returnarr;
+        }
+        else if(sum < target){
+            left++;
+        }
+        else{
+            right--;
+        }
+    }
+        return returnarr;
+    
+};
