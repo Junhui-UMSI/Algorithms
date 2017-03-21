@@ -1,21 +1,19 @@
 var wordBreak = function(s, wordDict) {
-    if(wordDict === null || wordDict.size === 0) {
-        return false;
-    }
-  
-    var possible = [];
-    possible[0] = true;
+    var hasFound = [],
+        len = s.length,
+        i,
+        j;
     
-    for(var i = 0; i < s.length; i++) {
-        if(possible[i]) {
-            for(var j = i + 1; j <= s.length; j++) {
-                var str = s.substring(i, j);
-                if(wordDict.has(str)) {
-                    possible[j] = true;
-                }
+    hasFound[0] = true;
+    
+    for (i = 1; i <= len; i++) {
+        for (j = 0; j < i; j++) {
+            if (hasFound[j] && wordDict.includes(s.substring(j, i))) {
+                hasFound[i] = true;
+                break;
             }
         }
     }
     
-    return possible[s.length] === true;
+    return hasFound[len] === true;
 };
